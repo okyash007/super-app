@@ -2,10 +2,25 @@
   display: flex;
 }
 
-.box2 {
-  display: flex;
+.screen {
+  height: 100vh;
+display: flex;
 }
 
-.chips div{
-    margin: 0.5rem 0.5rem 0 0;
+.box2 {
+  display: flex;
+  padding: 4rem;
+}
+
+.box div:nth-child(2) {
+  width: 100vw;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+.chips div {
+  margin: 0.5rem 0.5rem 0 0;
 }

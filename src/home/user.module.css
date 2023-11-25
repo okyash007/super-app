@@ -3,12 +3,12 @@
   padding: 1rem;
   border-radius: 1rem;
   display: flex;
+  margin: 0 1rem 1rem 0;
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
-  width: 20rem;
 }
 
 .chips div {

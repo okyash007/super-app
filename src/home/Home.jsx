@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { selectTrue } from "../helper";
 import styles from "./home.module.css";
 import User from "./User";
+import Weather from "./Weather";
+import News from "./News";
+import Notes from "./Notes";
+import Watch from "./Watch";
 
 const Home = () => {
   const store = useSelector((store) => store.app);
@@ -19,18 +23,22 @@ const Home = () => {
 
   return (
     <>
-      <div className={styles.box2}>
-        <div>
-          <div className={styles.box1}>
-            <div>
-              <div><User/></div>
-              <div>climate</div>
+      <div className={styles.screen}>
+        <div className={styles.box2}>
+          <div className={styles.right}>
+            <div className={styles.box1}>
+              <div>
+                <User />
+                <Weather />
+              </div>
+              <Notes />
             </div>
-            <div>notes</div>
+            <Watch />
           </div>
-          <div>watch</div>
+          <div className={styles.left}>
+            <News />
+          </div>
         </div>
-        <div>news</div>
       </div>
     </>
   );

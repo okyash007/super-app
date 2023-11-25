@@ -1,0 +1,7 @@
+.box {
+  background-color: #f1c75b;
+  flex-grow: 1;
+  border-radius: 1rem;
+  width: 40vw;
+  margin: 0 1rem 1rem 0;
+}
