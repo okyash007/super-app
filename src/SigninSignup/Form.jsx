@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styles from "./form.module.css";
 import { ColorButton, HoverSpan, Span } from "../styled";
+import { validate } from "../helper";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserRedux } from "../store/appSlice";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const store = useSelector((store) => store.app);
+
   const [user, setUser] = useState({
     name: "",
     username: "",
@@ -26,15 +35,6 @@ const Form = () => {
     }));
   };
 
-  const validate = (regix, value) => {
-    const isError = regix.test(value);
-    if (isError) {
-      return true;
-    } else if (!isError) {
-      return false;
-    }
-  };
-
   function isNotEmpty(value) {
     return value !== null && value !== undefined && value !== "";
   }
@@ -43,8 +43,14 @@ const Form = () => {
     const errorCheck = Object.values(error).every((item) => item === true);
     const userCheck = Object.values(user).every(isNotEmpty);
 
+    if( store.user ){
+      navigate('/genre')
+    }
+
+
     if (errorCheck && userCheck) {
-      console.log(user);
+      dispatch(setUserRedux(user));
+      navigate('/genre')
     }
   }, [error]);
 
@@ -72,28 +78,36 @@ const Form = () => {
           name="name"
           onChange={(e) => updateUser(e.target.name, e.target.value.trim())}
         />
-        {!error.name && <Span $color="red"> error here </Span>}
+        {!error.name && <Span $color="red">Field is required</Span>}
         <input
           type="text"
           placeholder="Username"
           name="username"
           onChange={(e) => updateUser(e.target.name, e.target.value.trim())}
         />
-        {!error.username && <Span $color="red"> error here </Span>}
+        {!error.username && <Span $color="red">Field is required</Span>}
         <input
           type="email"
           placeholder="Email"
           name="email"
           onChange={(e) => updateUser(e.target.name, e.target.value)}
         />
-        {!error.email && <Span $color="red"> error here </Span>}
+        {!error.email && (
+          <Span $color="red">
+            {user.email ? "Email is not correct" : "Field is required"}
+          </Span>
+        )}
         <input
           type="number"
           placeholder="Mobile"
           name="mobile"
           onChange={(e) => updateUser(e.target.name, e.target.value)}
         />
-        {!error.mobile && <Span $color="red"> error here </Span>}
+        {!error.mobile && (
+          <Span $color="red">
+            {user.mobile ? "Mobile number is not correct" : "Field is required"}
+          </Span>
+        )}
       </div>
       <label className={styles.container}>
         <input
@@ -104,7 +118,9 @@ const Form = () => {
         <div className={styles.checkmark}></div>
         <Span $color="#7C7C7C">Share my registration data with Superapp</Span>
 
-        {!error.share && <Span $color="red"> error here </Span>}
+        {!error.share && (
+          <Span $color="red">Check this box if you want to proceed</Span>
+        )}
       </label>
 
       <ColorButton type="submit" $bgColor="#72DB73">

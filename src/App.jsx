@@ -1,10 +1,39 @@
 import { useState } from "react";
 import Body from "./Body";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import SignUp from "./SigninSignup/SignUp";
+import Home from "./home/Home";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Genre from "./genre/Genre";
 
 function App() {
-  return <>
-  <Body/>
-  </>;
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Body />,
+      children: [
+        {
+          path: "/register",
+          element: <SignUp />,
+        },
+        {
+          path: "/genre",
+          element: <Genre />,
+        },
+        {
+          path: "/",
+          element: <Home />,
+        },
+      ],
+    },
+  ]);
+
+  return (
+    <Provider store={store}>
+      <RouterProvider router={appRouter} />
+    </Provider>
+  );
 }
 
 export default App;

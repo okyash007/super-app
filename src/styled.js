@@ -52,3 +52,31 @@ export const Heading = styled.h1`
   `}
   font-family: 'Single Day', cursive;
 `;
+
+export const Tab = styled.div`
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 9rem;
+
+  cursor: pointer;
+  ${({ $bgColor, $borderColor }) => css`
+    background-color: ${$bgColor};
+    box-shadow: 0 0 0 5px ${$borderColor};
+  `}
+`;
+
+export const Chip = styled.div`
+  padding: 0.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  ${({ $bgColor }) => css`
+    background-color: ${$bgColor};
+  `}
+  & p {
+    margin: 0.5rem;
+  }
+`;

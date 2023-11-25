@@ -1,8 +1,8 @@
 import React from "react";
-import SignUp from "./SigninSignup/SignUp";
+import { Outlet } from "react-router-dom";
 
 const Body = () => {
-  return <SignUp />;
+  return <Outlet />;
 };
 
 export default Body;
