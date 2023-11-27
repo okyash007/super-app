@@ -3,19 +3,18 @@ import useFetchData from "../hooks/useFetchData";
 import { getRandomNumber } from "../helper";
 import styles from "./news.module.css";
 import { useSelector } from "react-redux";
+import useGetNews from "../hooks/useGetNews";
 
 const News = () => {
-  const data = useFetchData(
+  const data = useGetNews(
     "https://newsapi.org/v2/top-headlines?country=us&apiKey=ffd1b1a6599e42fdb4b6d6617d83b5a8"
   );
 
-  const displayData = data.data?.articles;
+  const news = data.data;
 
-  if (!displayData) {
+  if (!news) {
     return null;
   }
-
-  const news = displayData[Math.floor(Math.random() * displayData.length)];
 
   return (
     <div className={styles.box}>

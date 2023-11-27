@@ -5,15 +5,6 @@ import { setNotes } from "../store/appSlice";
 
 const Notes = () => {
 
-
-  // const [text, setText] = useState(
-  //   JSON.parse(window.localStorage.getItem("text"))
-  // );
-  // const handleChange = (e) => {
-  //   setText(e.target.value);
-  //   window.localStorage.setItem("text", JSON.stringify(text));
-  // };
-
   const dispatch = useDispatch();
   const store = useSelector((store) => store.app);
 
