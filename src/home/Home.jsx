@@ -8,26 +8,27 @@ import Weather from "./Weather";
 import News from "./News";
 import Notes from "./Notes";
 import Watch from "./Watch";
+import { ColorButton } from "../styled";
 
 const Home = () => {
   const store = useSelector((store) => store.app);
   const navigate = useNavigate();
 
-  console.log(store);
-
   useEffect(() => {
     if (selectTrue(store.genre).length < 3) {
       navigate("/genre");
+    } else if (!store.user) {
+      navigate("/register");
     }
   }, []);
 
   return (
     <>
       <div className={styles.screen}>
-        <div className={styles.box2}>
-          <div className={styles.right}>
-            <div className={styles.box1}>
-              <div>
+        <div className={styles.box4}>
+          <div className={styles.box3}>
+            <div className={styles.box2}>
+              <div className={styles.box1}>
                 <User />
                 <Weather />
               </div>
@@ -35,11 +36,10 @@ const Home = () => {
             </div>
             <Watch />
           </div>
-          <div className={styles.left}>
-            <News />
-          </div>
+          <News />
         </div>
       </div>
+      <ColorButton className={styles.browse} $bgColor='#148A08'>Browse</ColorButton>
     </>
   );
 };

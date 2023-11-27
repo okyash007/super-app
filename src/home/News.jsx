@@ -13,10 +13,7 @@ const News = () => {
   if (!displayData) {
     return null;
   }
-
-  const randomIndex = getRandomNumber(displayData.length);
-  console.log(displayData[randomIndex]);
-  const news = displayData[randomIndex];
+  const news = displayData[Math.floor(Math.random() * displayData.length)];
 
   return (
     <div className={styles.box}>
