@@ -1,9 +1,19 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "./notes.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setNotes } from "../store/appSlice";
 
 const Notes = () => {
+
+
+  // const [text, setText] = useState(
+  //   JSON.parse(window.localStorage.getItem("text"))
+  // );
+  // const handleChange = (e) => {
+  //   setText(e.target.value);
+  //   window.localStorage.setItem("text", JSON.stringify(text));
+  // };
+
   const dispatch = useDispatch();
   const store = useSelector((store) => store.app);
 
