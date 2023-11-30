@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { selectTrue } from "../helper";
 import styles from "./home.module.css";
 import User from "./User";
@@ -39,7 +39,11 @@ const Home = () => {
           <News />
         </div>
       </div>
-      <ColorButton className={styles.browse} $bgColor='#148A08'>Browse</ColorButton>
+      <Link to={"/movies"}>
+        <ColorButton className={styles.browse} $bgColor="#148A08">
+          Browse
+        </ColorButton>
+      </Link>
     </>
   );
 };

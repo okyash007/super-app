@@ -17,7 +17,7 @@ const Chips = ({ updateGenre }) => {
       <div className={styles.chips}>
         {chips.map((m) => (
           <Chip $bgColor="#148a08" key={m.id}>
-            <p>{m.id}</p>
+            <p>{m.name}</p>
             <p
               className={styles.cross}
               onClick={() => {

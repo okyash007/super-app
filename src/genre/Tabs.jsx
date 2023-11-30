@@ -17,7 +17,7 @@ const Tabs = ({ updateGenre }) => {
           key={i}
           className={styles.tab}
         >
-          <h2>{m.id}</h2>
+          <h2>{m.name}</h2>
           <img src={m.image}  alt="" />
         </Tab>
       ))}

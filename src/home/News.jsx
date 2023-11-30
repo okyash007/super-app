@@ -1,8 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import useFetchData from "../hooks/useFetchData";
-import { getRandomNumber } from "../helper";
 import styles from "./news.module.css";
-import { useSelector } from "react-redux";
 import useGetNews from "../hooks/useGetNews";
 
 const News = () => {

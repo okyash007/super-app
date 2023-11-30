@@ -6,6 +6,7 @@ import SignUp from "./SigninSignup/SignUp";
 import Home from "./home/Home";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Genre from "./genre/Genre";
+import Movies from "./movies/Movies";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -25,6 +26,10 @@ function App() {
           path: "/",
           element: <Home />,
         },
+        {
+          path: "/movies",
+          element: <Movies/>
+        }
       ],
     },
   ]);

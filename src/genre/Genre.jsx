@@ -17,6 +17,7 @@ const Genre = () => {
     const newGenre = [...store.genre];
     newGenre[index] = {
       id: newGenre[index].id,
+      name: newGenre[index].name,
       color: newGenre[index].color,
       select: !newGenre[index].select,
       image: newGenre[index].image,
