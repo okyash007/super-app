@@ -39,11 +39,11 @@ const Home = () => {
           <News />
         </div>
       </div>
-      <Link to={"/movies"}>
-        <ColorButton className={styles.browse} $bgColor="#148A08">
-          Browse
-        </ColorButton>
-      </Link>
+      <div className={styles.browse}>
+        <Link to={"/movies"}>
+          <ColorButton $bgColor="#148A08">Browse</ColorButton>
+        </Link>
+      </div>
     </>
   );
 };

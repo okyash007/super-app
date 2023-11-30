@@ -1,5 +1,4 @@
 .box {
-  margin: 1rem 0;
   display: flex;
   flex-direction: column;
 }
@@ -16,16 +15,16 @@
   position: relative;
 }
 
-.name{
-    position: absolute;
-    bottom: 0;
-    opacity: 0;
-    transition: 0.4s;
-    width: 100%;
-    background-image: linear-gradient(to top, black, transparent);
+.name {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.4s;
+  width: 100%;
+  background-image: linear-gradient(to top, black, transparent);
 }
-.name p{
-    margin: 1rem;
+.name p {
+  margin: 1rem;
 }
 
 .poster img {
@@ -40,20 +39,22 @@
   transform: scale(1.05);
 }
 
-.poster:hover .name{
-    opacity: 1;
+.poster:hover .name {
+  opacity: 1;
 }
 
 .posters {
   display: flex;
   overflow-x: scroll;
   scrollbar-width: thin;
-  width: 95vw;
+  padding: 0 2rem;
 }
+
+
 
 .posters::-webkit-scrollbar {
   background-color: transparent;
-  width: 0.25rem;
+  height: 0.5rem;
 }
 
 .posters::-webkit-scrollbar-thumb {
@@ -63,3 +64,14 @@
   background-color: rgb(59, 59, 59);
   border-radius: 1rem;
 }
+
+.title {
+  margin: 1rem 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .poster {
+      width: 15rem;
+      min-width: 15rem;
+    }
+  }

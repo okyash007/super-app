@@ -17,7 +17,7 @@ const Genre = ({ genre }) => {
 
   return (
     <div className={styles.box}>
-      <p>{genre.name}</p>
+      <p className={styles.title}>{genre.name}</p>
       <div className={styles.posters}>
         {results.map((m) => (
           <div className={styles.poster} key={m.id}>

@@ -40,10 +40,9 @@ const Movies = () => {
           </Link>
         </div>
         <div className={styles.genre}>
-          <h2>Entertainment according to your choice</h2>
-          {genre.map((m) => (
-            <Genre key={m.id} genre={m} />
-          ))}
+          {
+            genre.map(m => <Genre genre={m}/>)
+          }
         </div>
       </div>
     </div>

@@ -34,5 +34,9 @@
   border-radius: 1rem;
 }
 
-
+@media only screen and (max-width: 768px) {
+  .box{
+    height: 30vh;
+  }
+}
 
