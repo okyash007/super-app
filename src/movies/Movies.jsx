@@ -6,7 +6,7 @@ import useMovies from "../hooks/useMovies";
 import { Heading } from "../styled";
 import pfp from "../assets/pfp.png";
 import styles from "./movies.module.css";
-import Genre from "./genre";
+import Genre from "./Genre";
 
 const Movies = () => {
   const store = useSelector((store) => store.app);
