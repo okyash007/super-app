@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import styles from "./watch.module.css";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import arrow from "../assets/arrow.svg";
 import { ColorButton } from "../styled";
+import arrowup from "../assets/arrowup.svg";
+import arrowdown from "../assets/arrowdown.svg";
 
 const Watch = () => {
   const [start, setStart] = useState(false);
-  const [timer, setTimer] = useState({
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+
+  const [sec, setSec] = useState(0);
 
   const [resetKey, setResetKey] = useState(0);
 
   const audio = new Audio("/bell.wav");
 
-  function updateTimer(field, value) {
-    setTimer((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+  function incSec(x) {
+    setSec((prev) => prev + x);
+  }
+
+  function decSec(x) {
+    setSec((prev) => prev - x);
   }
 
   function secondsToTime(seconds) {
@@ -35,18 +34,13 @@ const Watch = () => {
     return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
   }
 
-  function timeToSeconds(hours, minites, seconds) {
-    const totalSeconds = hours * 3600 + minites * 60 + seconds;
-    return totalSeconds;
-  }
-
   return (
     <div className={styles.box}>
       <div className={styles.watch}>
         <CountdownCircleTimer
           isPlaying={start}
           trailColor="transparent"
-          duration={timeToSeconds(timer.hours, timer.minutes, timer.seconds)}
+          duration={sec}
           colors="#FF6A6A"
           key={resetKey}
           size={160}
@@ -61,61 +55,52 @@ const Watch = () => {
       </div>
       <div className={styles.timer}>
         <div className={styles.clock}>
-          <div>
-            <p>Hours</p>
-            <button
-              onClick={() => {
-                updateTimer("hours", timer.hours + 1);
-              }}
-            >
-              <img src={arrow} alt="" />
-            </button>
-            <h1>{timer.hours}</h1>
-            <button
-              onClick={() => {
-                if (timer.hours > 0) {
-                  updateTimer("hours", timer.hours - 1);
-                }
-              }}
-            >
-              <img src={arrow} alt="" />
-            </button>
+          <div className={styles.inc}>
+            <ColorButton $bgColor="transparent" onClick={() => incSec(3600)}>
+              <img src={arrowup} alt="" />{" "}
+            </ColorButton>
+            <ColorButton $bgColor="transparent" onClick={() => incSec(60)}>
+              <img src={arrowup} alt="" />
+            </ColorButton>
+            <ColorButton $bgColor="transparent" onClick={() => incSec(1)}>
+              <img src={arrowup} alt="" />
+            </ColorButton>
           </div>
-          :
-          <div>
-            <p>Minutes</p>
-            <button onClick={() => updateTimer("minutes", timer.minutes + 1)}>
-              <img src={arrow} alt="" />
-            </button>
-            <h1>{timer.minutes}</h1>
-            <button
+          <h1>{secondsToTime(sec)}</h1>
+          <div className={styles.dec}>
+            <ColorButton
+              $bgColor="transparent"
               onClick={() => {
-                if (timer.minutes > 0) {
-                  updateTimer("minutes", timer.minutes - 1);
+                if (sec >= 3600) {
+                  decSec(3600);
                 }
               }}
             >
-              <img src={arrow} alt="" />
-            </button>
-          </div>
-          :
-          <div>
-            <p>Seconds</p>
-            <button onClick={() => updateTimer("seconds", timer.seconds + 1)}>
-              <img src={arrow} alt="" />
-            </button>
-            <h1>{timer.seconds}</h1>
-            <button
+              <img src={arrowdown} alt="" />
+            </ColorButton>
+            <ColorButton
+              $bgColor="transparent"
               onClick={() => {
-                if (timer.seconds > 0) {
-                  updateTimer("seconds", timer.seconds - 1);
+                if (sec >= 60) {
+                  decSec(60);
                 }
               }}
             >
-              <img src={arrow} alt="" />
-            </button>
+              <img src={arrowdown} alt="" />
+            </ColorButton>
+            <ColorButton
+              $bgColor="transparent"
+              onClick={() => {
+                if (sec >= 1) {
+                  decSec(1);
+                }
+              }}
+            >
+              <img src={arrowdown} alt="" />
+            </ColorButton>
           </div>
         </div>
+
         <ColorButton
           onClick={() => setStart(!start)}
           className={styles.browse}

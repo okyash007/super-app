@@ -27,17 +27,16 @@
 
 .clock{
   display: flex;
-  align-items: center;
-}
-
-.clock div{
-  display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
 }
 
-.clock div button{
-  background-color: transparent;
-  border: 0;
+.clock h1{
+  font-size: 2.6rem;
+}
+
+.inc , .dec{
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
 }
